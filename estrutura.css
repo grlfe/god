@@ -1,0 +1,119 @@
+Main.java
+|
+└── Main
+      ├── ServicoDoacao servicoDoacao
+      ├── ServicoInstituicao servicoInstituicao
+      ├── ServicoProjeto servicoProjeto
+      ├── ServicoTransacao servicoTransacao
+      ├── Métodos para interação com o usuário:
+      |    ├── registrarDoacao(Scanner, ServicoDoacao)
+      |    ├── cadastrarInstituicao(Scanner, ServicoInstituicao)
+      |    ├── listarInstituicoes(ServicoInstituicao)
+      |    ├── cadastrarProjeto(Scanner, ServicoProjeto)
+      |    ├── listarProjetos(ServicoProjeto)
+      |    ├── registrarTransacao(Scanner, ServicoTransacao)
+      |    └── listarTransacoes(ServicoTransacao)
+      └── main(String[] args)
+           ├── Instancia Scanner
+           ├── Instancia repositórios e serviços
+           └── Loop para interação com o usuário
+
+Interfaces.java
+|
+├── interface ServicoDoacao
+|    ├── registrarDoacao(Membro, double)
+|    ├── calcularTotalDoacoes()
+|    └── listarDoadores()
+|
+├── interface RepositorioDoacao
+|    ├── listarDoacoes()
+|    └── adicionarDoacao(Doacao)
+|
+├── interface ServicoInstituicao
+|    ├── cadastrarInstituicao(Instituicao)
+|    └── listarInstituicoes()
+|
+├── interface RepositorioInstituicao
+|    ├── adicionarInstituicao(Instituicao)
+|    └── listarInstituicoes()
+|
+├── interface ServicoProjeto
+|    ├── cadastrarProjeto(Projeto)
+|    └── listarProjetos()
+|
+├── interface RepositorioProjeto
+|    ├── adicionarProjeto(Projeto)
+|    └── listarProjetos()
+|
+├── interface ServicoTransacao
+|    ├── registrarTransacao(Transacao)
+|    └── listarTransacoes()
+|
+└── interface RepositorioTransacao
+     ├── adicionarTransacao(Transacao)
+     └── listarTransacoes()
+
+Repositorio.java
+|
+├── class RepositorioDoacaoImpl implements RepositorioDoacao
+|    ├── List<Doacao> doacoes
+|    ├── listarDoacoes()
+|    └── adicionarDoacao(Doacao)
+|
+├── class RepositorioInstituicaoImpl implements RepositorioInstituicao
+|    ├── List<Instituicao> instituicoes
+|    ├── adicionarInstituicao(Instituicao)
+|    └── listarInstituicoes()
+|
+├── class RepositorioProjetoImpl implements RepositorioProjeto
+|    ├── List<Projeto> projetos
+|    ├── adicionarProjeto(Projeto)
+|    └── listarProjetos()
+|
+└── class RepositorioTransacaoImpl implements RepositorioTransacao
+     ├── List<Transacao> transacoes
+     ├── adicionarTransacao(Transacao)
+     └── listarTransacoes()
+
+Servicos.java
+|
+├── class ServicoDoacaoImpl implements ServicoDoacao
+|    ├── RepositorioDoacao repositorioDoacao
+|    ├── registrarDoacao(Membro, double)
+|    |    └── salvarDoacaoArquivo(Doacao)
+|    ├── calcularTotalDoacoes()
+|    └── listarDoadores()
+|
+├── class ServicoInstituicaoImpl implements ServicoInstituicao
+|    ├── RepositorioInstituicao repositorioInstituicao
+|    ├── cadastrarInstituicao(Instituicao)
+|    └── listarInstituicoes()
+|
+├── class ServicoProjetoImpl implements ServicoProjeto
+|    ├── RepositorioProjeto repositorioProjeto
+|    ├── cadastrarProjeto(Projeto)
+|    └── listarProjetos()
+|
+└── class ServicoTransacaoImpl implements ServicoTransacao
+     ├── RepositorioTransacao repositorioTransacao
+     ├── registrarTransacao(Transacao)
+     └── listarTransacoes()
+
+Modelos (não fornecido no código fornecido, mas implícito)
+|
+├── class Membro
+|    ├── String nome
+|    └── String papel
+|
+├── class Doacao
+|    ├── Membro doador
+|    └── double valor
+|
+├── class Instituicao
+|    └── String nome
+|
+├── class Projeto
+|    └── String nome
+|
+└── class Transacao
+     └── String tipo
